@@ -91,7 +91,7 @@ header {
   position: absolute;
   top: 100%; /*置於父元素正下方*/
   width: 100%;
-  background: #ffffff;
+  background-color: rgba(255, 255, 255, 0.7);
   /* 加入下列這行：設定效果起始點*/
   transform-origin: top;
   transition: transform 0.3s ease-out;
