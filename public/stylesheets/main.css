@@ -1,0 +1,461 @@
+/* 載入字型 */
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700&display=swap&subset=chinese-traditional");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+html {
+  /*滑順地捲動*/
+  scroll-behavior: smooth;
+}
+body {
+  background-color: #f6f7f8;
+  font-family: "Noto Sans TC", sans-serif; /* 設定字型 */
+  font-size: 1rem;
+  line-height: 1.4;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  line-height: 0.9;
+}
+p {
+  margin: 0;
+}
+ul,
+li {
+  list-style-type: none; /* 拿掉前方圈圈 */
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none; /* 拿掉底線 */
+}
+
+/* 設定區塊寬度一致並置中 */
+.container {
+  width: 85%;
+  margin: 0 auto 3rem auto;
+}
+/* 共用按鈕樣式 */
+.action {
+  color: white;
+  background: #39bae6;
+  border-radius: 0.25rem;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0.25rem 1rem;
+  transition: all 0.1s linear;
+}
+.action:hover {
+  background: #267c99;
+  /* 陰影 */
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(87, 87, 87, 1);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(87, 87, 87, 1);
+  box-shadow: 0px 1px 5px 0px rgba(87, 87, 87, 1);
+}
+.background-image {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*Main Header*/
+header {
+  width: 100%;
+  height: 60px;
+  text-align: center;
+  background: #ffffff;
+  /* 陰影 */
+  -webkit-box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+}
+header {
+  /*固定置頂*/
+  position: fixed;
+  z-index: 999;
+}
+.nav {
+  position: absolute;
+  top: 100%; /*置於父元素正下方*/
+  width: 100%;
+  background: #ffffff;
+  /* 加入下列這行：設定效果起始點*/
+  transform-origin: top;
+  transition: transform 0.3s ease-out;
+  transform: scale(1, 0);
+}
+.navbar-brand {
+  /*與外層 Header 高度相同達到垂直置中*/
+  line-height: 60px;
+  color: #267b98;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.nav-item {
+  margin: 1.4rem 0;
+  /*預設透明度 0*/
+  opacity: 0;
+}
+.nav-link {
+  color: #267b98;
+}
+
+.navbar-toggle:checked ~ .nav {
+  transform: scale(1, 1);
+}
+
+.navbar-toggle:checked ~ .nav .nav-item {
+  /*開啟時透明度為1*/
+  transition: opacity 0.2s ease-out 0.15s;
+  opacity: 1;
+}
+.navbar-toggle-label {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 7.5%;
+  display: flex;
+  align-items: center;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  width: 30px;
+  height: 3px;
+  background: #267b98;
+}
+
+.hamburger {
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  position: absolute;
+  left: 0;
+  content: "";
+}
+.hamburger::before {
+  top: 8px;
+}
+.hamburger::after {
+  bottom: 8px;
+}
+
+.navbar-toggle {
+  /*不佔空間*/
+  visibility: hidden;
+  position: absolute;
+}
+
+/*Aactivity*/
+.banner-wrapper {
+  padding-top: 92px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 250px);
+  /*增加下方這行給間距*/
+  grid-gap: 0.5rem;
+  grid-template-areas:
+    "main main main main"
+    "left left right right";
+}
+.main-banner {
+  grid-area: main;
+  /*插入圖片*/
+  background-image: url("https://images.unsplash.com/photo-1520087619250-584c0cbd35e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1285&q=80");
+}
+
+.sub-banner-left {
+  grid-area: left;
+  /*插入圖片*/
+  background-image: url("https://images.unsplash.com/photo-1569809317138-8d2ff6060c4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
+}
+.sub-banner-right {
+  grid-area: right;
+  /*插入圖片*/
+  background-image: url("https://images.unsplash.com/photo-1535294435445-d7249524ef2e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80");
+}
+
+.main-banner,/*定位banner的文字元件*/
+.sub-banner {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+}
+
+/*文字內容和按鈕樣式設定*/
+.banner-title {
+  margin-bottom: 0.4rem;
+}
+.main-banner .banner-title {
+  font-size: 2rem;
+  color: #1a5366;
+}
+.banner-description {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.main-banner .banner-description {
+  color: #267b98;
+  font-size: 1rem;
+}
+.sub-banner .action {
+  font-size: 1rem;
+  padding: 0.25rem 1rem;
+}
+.sub-banner .banner-title,
+.sub-banner .banner-description {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+/*Album section*/
+.album-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  width: 100%;
+  grid-gap: 1.5rem;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  /*超出容器的圖片隱藏*/
+  overflow: hidden;
+  /*陰影*/
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+  -moz-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.08);
+  /*設定背景色為灰色，這樣透明度實現的時候文字才會清楚*/
+  background: #a9a9a9;
+}
+
+.card-img {
+  /*調整 card 內圖片的樣式*/
+  width: 100%; /*跟父元素一樣寬*/
+  height: 300px; /*高度控制在300px*/
+  object-fit: cover;
+  display: block; /*將inline轉為block，這樣圖片才能充滿<img>不會有空隙*/
+  /* 新增以下 */
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+}
+
+.card {
+  position: relative;
+} /*讓卡片可以被子元素定位*/
+
+.card-text {
+  /*根據卡片定位*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  /*往左和往上移動，自身一半的高度和寬度*/
+  text-align: center;
+  /*設定透明度*/
+  opacity: 0;
+  /*設定轉場效果*/
+  transition: opacity 0.3s ease-out;
+}
+
+.card:hover .card-text {
+  /*階層選擇器*/
+  opacity: 1;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.2em;
+}
+.card-description {
+  font-size: 1rem;
+}
+
+.card:hover .card-img {
+  /*圖片hover時的透明度設定*/
+  opacity: 0.4;
+}
+
+/*相片上的白線樣式設定*/
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  /*加上轉場效果*/
+  transition: transform 0.4s ease-out;
+}
+
+.card::before {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  /*設定初始值*/
+  transform: scale(0, 1);
+}
+
+.card::after {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  /*設定初始值*/
+  transform: scale(1, 0);
+}
+.card:hover::before {
+  transform: scale(1.05, 1);
+}
+
+.card:hover::after {
+  transform: scale(1, 1.05);
+}
+
+/*Adoption*/
+.adoption-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 135px;
+  width: 100%;
+  background: #fff;
+  -webkit-box-shadow: 2px 10px 12px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 2px 10px 12px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 10px 12px 0px rgba(0, 0, 0, 0.1);
+}
+.adoption-image {
+  width: 100%; /*讓圖片的寬度充滿網格*/
+}
+
+/*使用Grid類似flex的功能讓item水平且垂直至中*/
+.adoption-info {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 1.2rem;
+}
+/*設定領養資訊的文字樣式*/
+.adoption-info .title {
+  font-size: 1.75rem;
+  margin-bottom: 0.4rem;
+  color: #267c99;
+}
+.adoption-info .description {
+  font-size: 1rem;
+  margin-bottom: 0.9rem;
+  color: #5e5c5c;
+}
+
+/*Footer*/
+footer {
+  width: 100%;
+  text-align: center;
+  background: #4a4a4a;
+  padding: 1rem;
+  color: white;
+  letter-spacing: 2px;
+}
+
+/********* 電腦版樣式 *********/
+@media screen and (min-width: 768px) {
+  .action {
+    font-size: 1.2rem;
+    padding: 0.75rem 2rem;
+  }
+  /*Main Header*/
+  /*移除漢堡排*/
+  .navbar-toggle-label {
+    display: none;
+  }
+  /*導覽列 CSS 樣式設定復原*/
+  .nav {
+    all: unset;
+    grid-column: 3 / 4;
+  }
+  /*導覽項目 CSS 樣式設定復原*/
+  .nav-item {
+    margin: 0;
+    opacity: 1;
+    /*取消彼此間距離；opacity 改為 1*/
+  }
+
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(600px, 3fr) 1fr;
+  }
+  .navbar-brand {
+    grid-column: 2 / 3;
+  }
+  .nav-list {
+    height: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: end;
+    align-items: center;
+    grid-gap: 2em;
+  }
+
+  /*Activity*/
+  .banner-wrapper {
+    grid-template-areas:
+      "main main main left"
+      "main main main right";
+    grid-gap: 1.5rem;
+  }
+  .main-banner {
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .main-banner .banner-title {
+    font-size: 4rem;
+  }
+  .main-banner .banner-description {
+    font-size: 2rem;
+  }
+  .sub-banner .banner-title {
+    font-size: 2rem;
+  }
+  .sub-banner .action {
+    font-size: 1.2rem;
+  }
+
+  /*Adoption*/
+  .adoption-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 2rem;
+  }
+  /*item水平方向靠左邊對齊*/
+  .adoption-info {
+    justify-items: start;
+  }
+
+  /*文字微調*/
+  .adoption-info .title {
+    font-size: 3rem;
+  }
+  .adoption-info .description {
+    font-size: 1.875rem;
+  }
+}
